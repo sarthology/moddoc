@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  margin: 0px;
+}
+
+.main{
+  display: grid;
+  grid-template-columns: 1fr 3.5fr;
+}
+.sidebar{
+  width: 100%;
+  height: 100vh;
+  background-color: #bb4949;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+.projectbar{
+  background-color: #182231;
+}
