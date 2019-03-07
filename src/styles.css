@@ -19,7 +19,7 @@ body {
 .menubar {
   width: 100vw;
   height: 7vh;
-  background: #2d3846;
+  background: #182231;
   border-bottom: 1px solid rgb(23, 21, 35);
 }
 
@@ -93,7 +93,7 @@ body {
   font-size: 13px;
   font-weight: 100;
   color: white;
-  padding: 0px 20px;
+  padding: 0px 10px;
 }
 .down-arrow img {
   width: 10px;
@@ -107,4 +107,17 @@ body {
 .package span {
   font-size: 9px;
   color: #111419;
+}
+.logo{
+  width: 40px;
+  padding: 5px 15px;
+}
+.module-banner h1{
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #111419;
+}
+.module-banner{
+  padding: 10px;
 }
