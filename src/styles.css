@@ -4,9 +4,7 @@ body {
 }
 
 .main {
-  display: grid;
   height: 100vh;
-  grid-template-columns: 275px 4fr;
 }
 /* .menubar p {
   color: #ffffff;
@@ -24,8 +22,10 @@ body {
 }
 
 .sidebar {
-  width: 100%;
+  width: 300px;
+  height: 100vh;
   background-image: linear-gradient(-120deg, #d87f58, #bb4949);
+  position: fixed;
   /* background: #bb4949; */
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -122,4 +122,20 @@ body {
 }
 .module-banner{
   padding: 10px;
+}
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+      padding: 15px;
+  }
+}
+.view-window{
+  margin-left:300px;
 }
