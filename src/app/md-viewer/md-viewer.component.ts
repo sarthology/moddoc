@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'md-viewer',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./md-viewer.component.css']
 })
 export class MdViewerComponent implements OnInit {
+
+  @Input() src: string;
 
   constructor() { }
 
