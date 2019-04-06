@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModulebarComponent implements OnInit {
 
+  public moduleHide:boolean = true;
+  public devHide:boolean = true;
+
   constructor() { }
 
   ngOnInit() {

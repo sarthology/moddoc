@@ -78,6 +78,7 @@ body {
   font-size: 14px;
   border-top: 1px solid #111419;
   border-bottom: 1px solid #111419;
+  cursor: pointer;
 }
 .module-head p {
   margin: 0;
@@ -103,6 +104,9 @@ body {
 .package span {
   font-size: 9px;
   color: #111419;
+}
+.package {
+  cursor: pointer;
 }
 .logo {
   width: 40px;
@@ -132,4 +136,11 @@ body {
 }
 .view-window {
   margin-left: 300px;
+}
+.inactive-tab{
+  border-bottom:none;
+}
+.inactive-tab .down-arrow img,
+.inactive-dev-tab .down-arrow img{
+  transform: rotateZ(-90deg);
 }

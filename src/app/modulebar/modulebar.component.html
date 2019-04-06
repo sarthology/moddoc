@@ -3,10 +3,10 @@
     <h1>Modules</h1>
   </div>
   <div class="module-list">
-    <div class="module-head">
+    <div (click)="moduleHide=(moduleHide ? false : true)" [ngClass]="{'inactive-tab':!moduleHide,'module-head':true}">
       <p><span class="down-arrow"><img src="assets/down.png" alt=""></span> Dependencies List</p>
     </div>
-    <div class="package-list">
+    <div *ngIf="moduleHide" class="package-list">
       <div class="package">
         <p>Angular <span>2.0.2</span></p>
       </div>
@@ -23,10 +23,10 @@
         <p>zone.js <span>2.7.9</span></p>
       </div>
     </div>
-    <div class="module-head">
+    <div (click)="devHide=(devHide ? false : true)" [ngClass]="{'inactive-dev-tab':!devHide,'module-head':true}">
       <p><span class="down-arrow"><img src="assets/down.png" alt=""></span>Dev Dependencies List</p>
     </div>
-    <div class="package-list">
+    <div *ngIf="devHide" class="package-list">
       <div class="package">
         <p>karma <span>2.7.9</span></p>
       </div>
