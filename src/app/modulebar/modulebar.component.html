@@ -7,20 +7,8 @@
       <p><span class="down-arrow"><img src="assets/down.png" alt=""></span> Dependencies List</p>
     </div>
     <div *ngIf="moduleHide" class="package-list">
-      <div class="package">
-        <p>Angular <span>2.0.2</span></p>
-      </div>
-      <div class="package">
-        <p>rxjs <span>1.5.2</span></p>
-      </div>
-      <div class="package">
-        <p>core-js <span>1.9.6</span></p>
-      </div>
-      <div class="package">
-        <p>electron <span>0.0.2</span></p>
-      </div>
-      <div class="package">
-        <p>zone.js <span>2.7.9</span></p>
+      <div class="package" *ngFor="let dev of objectKeys(projects[0].dependencies)">
+        <p>{{}} <span>2.0.2</span></p>
       </div>
     </div>
     <div (click)="devHide=(devHide ? false : true)" [ngClass]="{'inactive-dev-tab':!devHide,'module-head':true}">

@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "core-js": "^2.5.4",
+    "electron-store": "^3.2.0",
     "github-markdown-css": "^3.0.1",
     "ngx-markdown": "^7.1.4",
     "rxjs": "~6.2.0",

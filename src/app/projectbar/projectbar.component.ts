@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileService } from "../file.service";
 
 @Component({
   selector: 'projectbar',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectbarComponent implements OnInit {
 
-  constructor() { }
+  public projects:Array<object> = this.fileService.projects;
+
+  constructor(private fileService: FileService) {
+
+  }
 
   ngOnInit() {
   }
 
+  addProject(){
+    this.fileService.getFiles()
+  }
+
+  addFolder(event){
+    console.log(event);
+
+  }
 }

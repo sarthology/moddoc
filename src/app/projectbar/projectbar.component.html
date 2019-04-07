@@ -1,20 +1,19 @@
 <div class="projectbar">
-  <div class="project-list">
+  <div class="project-list" >
     <img src="assets/moddoc.svg" class="logo">
     <div class="project-head">
       <p>Projects </p>
     </div>
-    <div class="project">
-      <p>Devtocli</p>
-    </div>
-    <div class="project">
-      <p>Dev10</p>
-    </div>
-    <div class="project">
-      <p>Dragula</p>
+    <div class="project" *ngFor="let project of projects">
+      <p>{{project.name}}</p>
     </div>
   </div>
   <div class="add-project">
-    <h1>+</h1>
+    <h1 (click)="addProject()">+</h1>
+    <input
+    id="selectProject" type="file"
+    name="name" style="display: none;"
+    (change)="addFolder($event)"
+    webkitdirectory directory  />
   </div>
 </div>

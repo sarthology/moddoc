@@ -1,6 +1,8 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const url = require('url');
+const fs = require('fs');
+
 
 let win;
 
@@ -29,6 +31,12 @@ function createWindow() {
 
 app.on('ready', createWindow);
 
+ipcMain.on("getFiles", (event, arg) => {
+  dialog.showOpenDialog({properties: ['openDirectory']},(filePaths)=>{
+    win.webContents.send("getFilesResponse", {file: filePaths[0] , data: addProject(filePaths[0])});
+  })
+});
+
 // on macOS, closing the window doesn't quit the app
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
@@ -42,3 +50,13 @@ app.on('activate', () => {
 		createWindow();
 	}
 });
+
+let addProject = (filePath)=>{
+    if(fs.existsSync(filePath+"/package.json")){
+      data = fs.readFileSync(filePath+"/package.json", 'utf8')
+      return JSON.parse(data);
+    }
+    else{
+      console.log("not a wanted folder type")
+    }
+}
