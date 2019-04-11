@@ -6,7 +6,8 @@ import { IpcRenderer } from 'electron'
 })
 export class FileService {
   private ipc: IpcRenderer
-  public projects: Array<object> = []
+  public projects: Array<{file:string,data:Object}> = []
+  public currentModule:string;
 
   constructor() {
     if ((<any>window).require) {
@@ -23,7 +24,7 @@ export class FileService {
   async getFiles() {
     return new Promise<string[]>((resolve, reject) => {
       this.ipc.once("getFilesResponse", (event, arg) => {
-        this.projects.push(arg.data)
+        this.projects.push(arg)
         resolve();
       });
       this.ipc.send("getFiles");

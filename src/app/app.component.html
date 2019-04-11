@@ -2,8 +2,8 @@
   <div class="sidebar">
     <projectbar></projectbar>
 
-    <modulebar></modulebar>
+    <modulebar (currentModule)="receiveMessage($event)"></modulebar>
   </div>
 
-  <md-viewer [src]="'assets/README.md'"></md-viewer>
+  <md-viewer [src]="src"></md-viewer>
 </div>
