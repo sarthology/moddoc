@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FileService } from "../file.service";
 
 @Component({
@@ -9,6 +9,8 @@ import { FileService } from "../file.service";
 export class ProjectbarComponent implements OnInit {
 
   public projects:Array<object> = this.fileService.projects;
+
+  @Output() currentProject = new EventEmitter<string>();
 
   constructor(private fileService: FileService) {
 
@@ -21,8 +23,7 @@ export class ProjectbarComponent implements OnInit {
     this.fileService.getFiles()
   }
 
-  addFolder(event){
-    console.log(event);
-
+  setCurrentProject(project){
+    this.currentProject.emit(project);
   }
 }

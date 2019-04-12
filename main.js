@@ -8,8 +8,8 @@ let win;
 
 function createWindow() {
 	win = new BrowserWindow({
-		width: 800,
-		height: 600
+		width: 1200,
+		height: 740
 	});
 
 	// load the dist folder from Angular
@@ -33,7 +33,7 @@ app.on('ready', createWindow);
 
 ipcMain.on("getFiles", (event, arg) => {
   dialog.showOpenDialog({properties: ['openDirectory']},(filePaths)=>{
-    win.webContents.send("getFilesResponse", {file: filePaths[0] , data: addProject(filePaths[0])});
+    win.webContents.send("getFilesResponse", {file: filePaths[0] , ...addProject(filePaths[0])});
   })
 });
 

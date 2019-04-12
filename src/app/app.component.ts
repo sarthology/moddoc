@@ -1,7 +1,5 @@
 import { Component} from '@angular/core';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,11 +8,17 @@ import { Component} from '@angular/core';
 export class AppComponent {
   title = 'moddoc';
   public src:string;
+  public project:string;
 
   constructor(){
 
   }
-  receiveMessage($event) {
+
+  receiveModule($event) {
     this.src = $event
+  }
+
+  receiveProject($event) {
+    this.project = $event
   }
 }

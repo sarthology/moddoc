@@ -1,27 +1,27 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FileService } from "../file.service";
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'modulebar',
   templateUrl: './modulebar.component.html',
   styleUrls: ['./modulebar.component.css']
 })
+
 export class ModulebarComponent implements OnInit {
 
   public moduleHide:boolean = true;
   public devHide:boolean = true;
-  public projects:Array<object> = this.fileService.projects;
   public objectKeys = Object.keys;
 
   @Output() currentModule = new EventEmitter<string>();
+  @Input() project: any;
 
-  constructor(private fileService: FileService) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
   setCurrentModule(module){
-    this.currentModule.emit(this.fileService.projects[0].file+"/node_modules/"+module+"/README.md")
+    this.currentModule.emit(this.project.file +"/node_modules/"+module+"/README.md")
   }
 
 }

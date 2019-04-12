@@ -7,16 +7,16 @@
       <p><span class="down-arrow"><img src="assets/down.png" alt=""></span> Dependencies List</p>
     </div>
     <div *ngIf="moduleHide" class="package-list">
-      <div class="package" *ngFor="let dev of objectKeys(projects[0].data.dependencies)">
-        <p (click)="setCurrentModule(dev)">{{dev}} <span>{{projects[0].data.dependencies[dev]}}</span></p>
+      <div class="package" *ngFor="let dev of objectKeys(project.dependencies)">
+        <p (click)="setCurrentModule(dev)">{{dev}} <span>{{project.dependencies[dev]}}</span></p>
       </div>
     </div>
     <div (click)="devHide=(devHide ? false : true)" [ngClass]="{'inactive-dev-tab':!devHide,'module-head':true}">
       <p><span class="down-arrow"><img src="assets/down.png" alt=""></span>Dev Dependencies List</p>
     </div>
     <div *ngIf="devHide" class="package-list">
-      <div class="package" *ngFor="let dev of objectKeys(projects[0].data.devDependencies)">
-        <p (click)="setCurrentModule(dev)">{{dev}} <span>{{projects[0].data.devDependencies[dev]}}</span></p>
+      <div class="package" *ngFor="let dev of objectKeys(project.devDependencies)">
+        <p (click)="setCurrentModule(dev)">{{dev}} <span>{{project.devDependencies[dev]}}</span></p>
       </div>
     </div>
   </div>

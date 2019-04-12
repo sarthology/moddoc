@@ -1,8 +1,8 @@
 <div class="main">
   <div class="sidebar">
-    <projectbar></projectbar>
+    <projectbar (currentProject)="receiveProject($event)"></projectbar>
 
-    <modulebar (currentModule)="receiveMessage($event)"></modulebar>
+    <modulebar (currentModule)="receiveModule($event)" [project]="project"></modulebar>
   </div>
 
   <md-viewer [src]="src"></md-viewer>
