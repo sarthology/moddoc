@@ -13,7 +13,7 @@ export class ModulebarComponent implements OnInit {
   public objectKeys = Object.keys;
 
   @Output() currentModule = new EventEmitter<string>();
-  @Input() project: any;
+  @Input() project: {file:string};
 
   constructor() { }
 

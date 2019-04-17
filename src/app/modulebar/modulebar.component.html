@@ -2,7 +2,7 @@
   <div class="module-banner">
     <h1>Modules</h1>
   </div>
-  <div class="module-list">
+  <div class="module-list" *ngIf="project">
     <div (click)="moduleHide=(moduleHide ? false : true)" [ngClass]="{'inactive-tab':!moduleHide,'module-head':true}">
       <p><span class="down-arrow"><img src="assets/down.png" alt=""></span> Dependencies List</p>
     </div>

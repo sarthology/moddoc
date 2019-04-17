@@ -33,7 +33,12 @@ app.on('ready', createWindow);
 
 ipcMain.on("getFiles", (event, arg) => {
   dialog.showOpenDialog({properties: ['openDirectory']},(filePaths)=>{
-    win.webContents.send("getFilesResponse", {file: filePaths[0] , ...addProject(filePaths[0])});
+    if(filePaths){
+      let data = addProject(filePaths[0]);
+      data ?  data = {file: filePaths[0] , ...data} : data = null
+      win.webContents.send("getFilesResponse", data);
+    }
+    else win.webContents.send("getFilesResponse", null)
   })
 });
 
@@ -57,6 +62,7 @@ let addProject = (filePath)=>{
       return JSON.parse(data);
     }
     else{
-      console.log("not a wanted folder type")
+      dialog.showMessageBox({type:"info",message:"Your Project is node based.",buttons:["ok"]})
+      return null
     }
 }

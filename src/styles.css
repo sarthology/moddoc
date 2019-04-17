@@ -36,8 +36,8 @@ body {
 .project {
   color: white;
   font-family: sans-serif;
-  font-weight: 100;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 13px;
   transition: background 1s;
   width: 100%;
   height: 50px;
@@ -64,6 +64,7 @@ body {
 .project p {
   margin: 0px;
   padding: 15px 10px;
+  text-transform: capitalize;
 }
 .add-project {
   text-align: center;
@@ -91,6 +92,11 @@ body {
   font-weight: 100;
   color: white;
   padding: 10px 10px;
+
+}
+.project-list{
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .down-arrow img {
   width: 10px;
@@ -143,4 +149,8 @@ body {
 .inactive-tab .down-arrow img,
 .inactive-dev-tab .down-arrow img{
   transform: rotateZ(-90deg);
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }
