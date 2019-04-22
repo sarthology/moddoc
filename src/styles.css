@@ -134,7 +134,25 @@ body {
   margin: 0 auto;
   padding: 45px;
 }
-
+.browser-body{
+  display: none;
+}
+iframe{
+  border: none;
+  width: 100%;
+  height: 100vh;
+}
+.markdown-body-frame{
+  max-width: 0px;
+  margin-top: 50px;
+}
+.browser{
+  font-family: sans-serif;
+  padding: 10px;
+  font-weight: lighter;
+  color: #dc3545;
+  cursor: pointer
+}
 @media (max-width: 767px) {
   .markdown-body {
     padding: 15px;
