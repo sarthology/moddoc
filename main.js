@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
-
+var parseArgs = require('minimist')
 
 let win;
 
@@ -22,7 +22,6 @@ function createWindow() {
 	);
 
 	// The following is optional and will open the DevTools:
-	// win.webContents.openDevTools()
 
 	win.on('closed', () => {
 		win = null;
