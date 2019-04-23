@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, clipboard } = require('electron');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
@@ -40,6 +40,9 @@ ipcMain.on("getFiles", (event, arg) => {
     else win.webContents.send("getFilesResponse", null)
   })
 });
+ipcMain.on("copyCode",(event,code)=>{
+  clipboard.writeText(code);
+})
 
 // on macOS, closing the window doesn't quit the app
 app.on('window-all-closed', () => {

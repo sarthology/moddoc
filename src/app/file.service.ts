@@ -34,4 +34,8 @@ export class FileService {
       this.ipc.send("getFiles");
     });
   }
+
+  copyCode(data){
+    return this.ipc.send('copyCode',data)
+  }
 }

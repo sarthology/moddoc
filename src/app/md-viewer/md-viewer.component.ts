@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { MarkdownService } from "ngx-markdown";
+import { FileService } from "../file.service";
+
 
 @Component({
   selector: "md-viewer",
@@ -9,8 +11,9 @@ import { MarkdownService } from "ngx-markdown";
 export class MdViewerComponent implements OnInit {
   @Input() src: string;
   public externalLink: string;
+  public copyText;
 
-  constructor(private markdownService: MarkdownService) { }
+  constructor(private markdownService: MarkdownService,private fileService : FileService) { }
 
   ngOnInit() {
     this.markdownService.renderer.heading = (text: string, level: number) => {
@@ -20,9 +23,14 @@ export class MdViewerComponent implements OnInit {
         "<h" + level + " id=" + escapedText + ">" + text + "</h" + level + ">"
       );
     };
+    this.copyText = (event)=>{
+      this.fileService.copyCode(event.target.parentNode.nextSibling.innerText);
+      event.target.innerText = "copied"
+    }
   }
 
   onLoad(e) {
+
     document.querySelectorAll("a").forEach(e => {
       let href = e.getAttribute("href");
       e.onclick = event => {
@@ -33,9 +41,6 @@ export class MdViewerComponent implements OnInit {
           ).offsetTop;
           window.scrollTo(0, top);
         }
-        // else if(href.indexOf("md") === href.length - 2){
-        //   this.src = href
-        // }
         else {
           document
             .querySelector(".markdown-body")
@@ -49,6 +54,14 @@ export class MdViewerComponent implements OnInit {
         }
       };
     });
+
+    document.querySelectorAll('pre').forEach(e =>{
+      var span = document.createElement("div");
+      span.innerHTML = "<span>copy</span>";
+      span.id = 'clipper';
+      e.insertBefore(span,e.firstChild);
+      span.addEventListener("click",this.copyText,false)
+    })
   }
 
   reset() {
