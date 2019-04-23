@@ -44,7 +44,7 @@ export class MdViewerComponent implements OnInit {
             .querySelector(".browser-body")
             .setAttribute("style", "display:block");
           document
-            .querySelector("iframe")
+            .querySelector("webview")
             .setAttribute("src", href);
         }
       };

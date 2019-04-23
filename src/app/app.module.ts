@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { ModulebarComponent } from './modulebar/modulebar.component';
     MarkdownModule.forRoot({ loader: HttpClient })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
