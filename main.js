@@ -2,15 +2,13 @@ const { app, BrowserWindow, ipcMain, dialog, clipboard } = require('electron');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
-var parseArgs = require('minimist')
 
 let win;
 
 function createWindow() {
-	win = new BrowserWindow({
-		width: 1200,
-		height: 740
-	});
+	win = new BrowserWindow();
+
+  win.maximize();
 
 	// load the dist folder from Angular
 	win.loadURL(

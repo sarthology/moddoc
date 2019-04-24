@@ -26,7 +26,7 @@ export class FileService {
       this.ipc.once("getFilesResponse", (event, arg) => {
         if(arg){
           this.projects.push(arg)
-          resolve()
+          resolve(arg)
         } else{
           reject()
         }

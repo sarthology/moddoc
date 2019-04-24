@@ -2,7 +2,7 @@
   <div class="sidebar">
     <projectbar (currentProject)="receiveProject($event)"></projectbar>
 
-    <modulebar (currentModule)="receiveModule($event)" [project]="project"></modulebar>
+    <modulebar *ngIf="project" (currentModule)="receiveModule($event)" [project]="project"></modulebar>
   </div>
 
   <md-viewer [src]="src"></md-viewer>

@@ -10,7 +10,7 @@ export class ProjectbarComponent implements OnInit {
 
   public projects:Array<object> = this.fileService.projects;
 
-  @Output() currentProject = new EventEmitter<string>();
+  @Output() currentProject = new EventEmitter<object>();
 
   constructor(private fileService: FileService) {
 
@@ -20,7 +20,9 @@ export class ProjectbarComponent implements OnInit {
   }
 
   addProject(){
-    this.fileService.getFiles()
+    this.fileService.getFiles().then((project:Object)=>{
+      this.currentProject.emit(project);
+    });
   }
 
   setCurrentProject(project){

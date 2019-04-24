@@ -8,7 +8,7 @@ import { Component} from '@angular/core';
 export class AppComponent {
   title = 'moddoc';
   public src:string;
-  public project:string;
+  public project:object;
 
   constructor(){
 
