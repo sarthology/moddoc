@@ -4,10 +4,10 @@
 /dist
 /tmp
 /out-tsc
+/release-builds
 
 # dependencies
 /node_modules
-
 # IDEs and editors
 /.idea
 .project
