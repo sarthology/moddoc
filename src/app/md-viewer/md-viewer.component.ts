@@ -30,7 +30,7 @@ export class MdViewerComponent implements OnInit {
   }
 
   onLoad(e) {
-
+    window.scrollTo(0,0)
     document.querySelectorAll("a").forEach(e => {
       let href = e.getAttribute("href");
       e.onclick = event => {

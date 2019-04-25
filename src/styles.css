@@ -51,6 +51,9 @@ modulebar{
 .project:hover {
   background: #2d3846;
 }
+.active-project{
+  background: #2d3846;
+}
 .project-head {
   text-transform: uppercase;
   color: white;

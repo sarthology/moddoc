@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { IpcRenderer } from 'electron'
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -38,4 +39,6 @@ export class FileService {
   copyCode(data){
     return this.ipc.send('copyCode',data)
   }
+
+
 }

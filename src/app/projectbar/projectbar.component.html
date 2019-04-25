@@ -5,7 +5,7 @@
       <p>Projects </p>
     </div>
     <div class="project" *ngFor="let project of projects">
-      <p (click)="setCurrentProject(project)">{{project.name}}</p>
+      <p (click)="setCurrentProject(project,$event)">{{project.name}}</p>
     </div>
   </div>
   <div class="add-project">

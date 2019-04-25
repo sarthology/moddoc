@@ -19,6 +19,8 @@ export class AppComponent {
   }
 
   receiveProject($event) {
+    console.log($event);
+
     this.project = $event
   }
 }

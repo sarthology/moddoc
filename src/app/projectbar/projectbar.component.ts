@@ -17,6 +17,9 @@ export class ProjectbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fileService.getFiles().then((project:Object)=>{
+      this.currentProject.emit(project);
+    });
   }
 
   addProject(){
@@ -25,7 +28,7 @@ export class ProjectbarComponent implements OnInit {
     });
   }
 
-  setCurrentProject(project){
+  setCurrentProject(project,event){
     this.currentProject.emit(project);
   }
 }

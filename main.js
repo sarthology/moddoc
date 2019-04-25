@@ -1,9 +1,34 @@
+#!/usr/bin/env node
+
 const { app, BrowserWindow, ipcMain, dialog, clipboard } = require('electron');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
+const meow = require('meow');
 
-let win;
+const cli = meow(
+  `
+  Usage
+    $ moddoc .
+    $ moddoc path/to/project
+  Examples
+	  $ moddoc ~/Downloads/moddoc
+`,
+  {
+    flags: {
+      help: {
+        alias: 'h',
+      },
+      version: {
+        alias: 'v',
+      },
+    },
+  }
+);
+
+const { input } = cli;
+
+let win,initialData;
 
 function createWindow() {
 	win = new BrowserWindow();
@@ -26,17 +51,30 @@ function createWindow() {
 	});
 }
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+  if (input[0]) {
+    let data = addProject(input[0])
+    store.set(initialData,data)
+  }
+});
 
 ipcMain.on("getFiles", (event, arg) => {
-  dialog.showOpenDialog({properties: ['openDirectory']},(filePaths)=>{
-    if(filePaths){
-      let data = addProject(filePaths[0]);
-      data ?  data = {file: filePaths[0] , ...data} : data = null
-      win.webContents.send("getFilesResponse", data);
-    }
-    else win.webContents.send("getFilesResponse", null)
-  })
+  if(initialData && input[0]){
+    win.webContents.send("getFilesResponse", initialData);
+    initialData = null;
+  }
+  else{
+    dialog.showOpenDialog({properties: ['openDirectory']},(filePaths)=>{
+      if(filePaths){
+        let data = addProject(filePaths[0]);
+        data ?  data = {file: filePaths[0] , ...data} : data = null
+        win.webContents.send("getFilesResponse", data);
+      }
+      else win.webContents.send("getFilesResponse", null)
+    })
+
+  }
 });
 ipcMain.on("copyCode",(event,code)=>{
   clipboard.writeText(code);
@@ -62,7 +100,7 @@ let addProject = (filePath)=>{
       return JSON.parse(data);
     }
     else{
-      dialog.showMessageBox({type:"info",message:"Your Project is node based.",buttons:["ok"]})
+      dialog.showMessageBox({type:"info",message:"Your Project is not node based.",buttons:["ok"]})
       return null
     }
 }
