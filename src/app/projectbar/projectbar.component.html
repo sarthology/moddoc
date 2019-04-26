@@ -4,8 +4,11 @@
     <div class="project-head">
       <p>Projects </p>
     </div>
-    <div class="project" *ngFor="let project of projects">
-      <p (click)="setCurrentProject(project,$event)">{{project.name}}</p>
+    <div id="project-names">
+      <div class="project" *ngFor="let project of projects;  let last = last" (click)="setCurrentProject(project,$event)">
+        <p>{{project.name}}</p>
+        <span *ngIf="last || clicked === null">{{highlightProject()}}</span>
+      </div>
     </div>
   </div>
   <div class="add-project">
