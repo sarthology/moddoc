@@ -3,20 +3,24 @@
     <h1>Modules</h1>
   </div>
   <div class="module-list" *ngIf="project">
-    <div (click)="moduleHide=(moduleHide ? false : true)" [ngClass]="{'inactive-tab':!moduleHide,'module-head':true}">
-      <p><span class="down-arrow"><img src="assets/down.png" alt=""></span> Dependencies List</p>
-    </div>
-    <div *ngIf="moduleHide" class="package-list">
-      <div class="package" *ngFor="let dev of objectKeys(project.dependencies)">
-        <p (click)="setCurrentModule(dev)">{{dev}} <span>{{project.dependencies[dev]}}</span></p>
+    <div *ngIf="project.dependencies" class="normal-dep">
+      <div (click)="moduleHide=(moduleHide ? false : true)" [ngClass]="{'inactive-tab':!moduleHide,'module-head':true}">
+        <p><span class="down-arrow"><img src="assets/down.png" alt=""></span> Dependencies List</p>
+      </div>
+      <div *ngIf="moduleHide"  class="package-list">
+        <div class="package"  *ngFor="let dev of objectKeys(project.dependencies)">
+          <p (click)="setCurrentModule(dev)">{{dev}} <span>{{project.dependencies[dev]}}</span></p>
+        </div>
       </div>
     </div>
-    <div (click)="devHide=(devHide ? false : true)" [ngClass]="{'inactive-dev-tab':!devHide,'module-head':true}">
-      <p><span class="down-arrow"><img src="assets/down.png" alt=""></span>Dev Dependencies List</p>
-    </div>
-    <div *ngIf="devHide" class="package-list">
-      <div class="package" *ngFor="let dev of objectKeys(project.devDependencies)">
-        <p (click)="setCurrentModule(dev)">{{dev}} <span>{{project.devDependencies[dev]}}</span></p>
+    <div *ngIf="project.devDependencies" class="dev-dep">
+      <div (click)="devHide=(devHide ? false : true)" [ngClass]="{'inactive-dev-tab':!devHide,'module-head':true}">
+        <p><span class="down-arrow"><img src="assets/down.png" alt=""></span>Dev Dependencies List</p>
+      </div>
+      <div *ngIf="devHide" class="package-list">
+        <div class="package" *ngFor="let dev of objectKeys(project.devDependencies)">
+          <p (click)="setCurrentModule(dev)">{{dev}} <span>{{project.devDependencies[dev]}}</span></p>
+        </div>
       </div>
     </div>
   </div>

@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   margin: 0px;
-  user-select: none;
 }
 
 .main {
@@ -18,6 +17,7 @@ modulebar{
   background-image: linear-gradient(-120deg, #d87f58, #bb4949);
   overflow-x: hidden;
   overflow-y: scroll;
+  user-select: none;
 }
 .sidebar {
   width: 300px;
@@ -25,6 +25,7 @@ modulebar{
   position: fixed;
   display: grid;
   grid-template-columns: 1fr 4fr;
+  user-select: none;
 }
 
 .projectbar {
@@ -34,6 +35,7 @@ modulebar{
   height: 100vh;
   flex-direction: column;
   justify-content: space-between;
+  user-select: none;
 }
 
 .project {
@@ -157,6 +159,7 @@ webview {
   cursor: pointer;
   background: white;
   padding: 4px;
+  user-select: none;
 }
 .markdown-body-frame {
   max-width: 0px;

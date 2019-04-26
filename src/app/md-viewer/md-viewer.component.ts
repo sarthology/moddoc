@@ -26,6 +26,9 @@ export class MdViewerComponent implements OnInit {
     this.copyText = (event)=>{
       this.fileService.copyCode(event.target.parentNode.nextSibling.innerText);
       event.target.innerText = "copied"
+      setTimeout(()=>{
+        event.target.innerText = "copy"
+      },2000)
     }
   }
 
