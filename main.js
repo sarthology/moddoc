@@ -84,6 +84,10 @@ ipcMain.on("onFileError",(event)=>{
   dialog.showErrorBox("No Readme", "This package don't have a readme file.");
 })
 
+ipcMain.on("onAlreadyExist",(event)=>{
+  dialog.showErrorBox("Duplicate Project", "This package already being added. Add another.");
+})
+
 
 // on macOS, closing the window doesn't quit the app
 app.on('window-all-closed', () => {

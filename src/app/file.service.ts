@@ -25,10 +25,11 @@ export class FileService {
   async getFiles() {
     return new Promise<string[]>((resolve, reject) => {
       this.ipc.once("getFilesResponse", (event, arg) => {
-        if(arg){
-          this.projects.push(arg)
-          resolve(arg)
-        } else{
+        if(arg && this.distinct(this.projects,arg)){
+            this.projects.push(arg)
+            resolve(arg)
+        }
+        else{
           reject()
         }
       });
@@ -42,5 +43,14 @@ export class FileService {
 
   noFileError(error){
     return this.ipc.send('onFileError',error)
+  }
+  distinct(projects:any,arg){
+    if(projects.filter(project=>project.file!==arg.file).length > 0 || projects.length === 0){
+      return true
+    }
+    else{
+      this.ipc.send('onAlreadyExist','project')
+      return false
+    }
   }
 }
