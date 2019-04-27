@@ -21,7 +21,7 @@ export class ModulebarComponent implements OnInit {
   }
 
   setCurrentModule(module){
-    this.currentModule.emit(this.project.file +"/node_modules/"+module+"/README.md")
+    this.currentModule.emit(this.project.file +"/node_modules/"+module+"/README.md");
   }
 
 }

@@ -33,6 +33,7 @@ export class MdViewerComponent implements OnInit {
   }
 
   onLoad(e) {
+    this.src = null
     window.scrollTo(0,0)
     document.querySelectorAll("a").forEach(e => {
       let href = e.getAttribute("href");
@@ -65,6 +66,10 @@ export class MdViewerComponent implements OnInit {
       e.insertBefore(span,e.firstChild);
       span.addEventListener("click",this.copyText,false)
     })
+  }
+
+  noError(e){
+    this.fileService.noFileError(e);
   }
 
   reset() {

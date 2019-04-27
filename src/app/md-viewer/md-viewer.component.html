@@ -1,6 +1,6 @@
 <div class="view-window">
   <div  class="markdown-body">
-    <markdown [src]="src" (load)="onLoad($event)"></markdown>
+    <markdown [src]="src" (load)="onLoad($event)" (error)="noError($event)"></markdown>
   </div>
   <div class="browser-body">
     <div class="browser" (click)="reset()"> &lt; Back</div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { IpcRenderer } from 'electron'
+import { IpcRenderer,dialog } from 'electron'
 
 
 @Injectable({
@@ -40,5 +40,7 @@ export class FileService {
     return this.ipc.send('copyCode',data)
   }
 
-
+  noFileError(error){
+    return this.ipc.send('onFileError',error)
+  }
 }

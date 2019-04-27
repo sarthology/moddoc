@@ -37,12 +37,9 @@ export class ProjectbarComponent implements OnInit {
       document.querySelector('.active-project').classList.remove('active-project')
     }
     if( this.clicked === null){
-      console.log("bro");
-      console.log(this.clicked)
       document.getElementById('project-names').lastElementChild.classList.add('active-project')
     }
     else if(this.clicked) {
-      console.log("no");
       this.clicked.target.closest('.project').classList.add('active-project')
       this.clicked = null;
     }

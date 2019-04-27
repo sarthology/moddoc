@@ -73,9 +73,9 @@ ipcMain.on("getFiles", (event, arg) => {
       }
       else win.webContents.send("getFilesResponse", null)
     })
-
   }
 });
+
 ipcMain.on("copyCode",(event,code)=>{
   clipboard.writeText(code);
 })
