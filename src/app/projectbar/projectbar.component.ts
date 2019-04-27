@@ -22,9 +22,13 @@ export class ProjectbarComponent implements OnInit {
     });
   }
 
-  addProject(){
+  addProject(event){
+    event.target.style = "display:none;"
     this.fileService.getFiles().then((project:Object)=>{
       this.currentProject.emit(project);
+      event.target.style = "display:block;"
+    }).catch(()=>{
+      event.target.style = "display:block;"
     })
   }
 

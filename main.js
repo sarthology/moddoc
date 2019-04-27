@@ -80,6 +80,11 @@ ipcMain.on("copyCode",(event,code)=>{
   clipboard.writeText(code);
 })
 
+ipcMain.on("onFileError",(event)=>{
+  dialog.showErrorBox("No Readme", "This package don't have a readme file.");
+})
+
+
 // on macOS, closing the window doesn't quit the app
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
