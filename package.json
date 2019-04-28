@@ -1,6 +1,7 @@
 {
   "name": "moddoc",
-  "version": "0.0.0",
+  "description": "A new way to read Documentation of Node Modules",
+  "version": "0.0.1",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
