@@ -4,29 +4,8 @@ const { app, BrowserWindow, ipcMain, dialog, clipboard } = require('electron');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
-const meow = require('meow');
 
-const cli = meow(
-  `
-  Usage
-    $ moddoc .
-    $ moddoc path/to/project
-  Examples
-	  $ moddoc ~/Downloads/moddoc
-`,
-  {
-    flags: {
-      help: {
-        alias: 'h',
-      },
-      version: {
-        alias: 'v',
-      },
-    },
-  }
-);
-
-const { input } = cli;
+const input = process.argv[1];
 
 let win,initialData;
 
@@ -53,14 +32,14 @@ function createWindow() {
 
 app.on('ready', () => {
   createWindow();
-  if (input[0]) {
-    let data = addProject(input[0])
-    store.set(initialData,data)
+  if (input) {
+    initialData = addProject(input);
   }
 });
 
 ipcMain.on("getFiles", (event, arg) => {
-  if(initialData && input[0]){
+  if(initialData && input){
+    initialData ? initialData = { file: input, ...initialData } : initialData = null
     win.webContents.send("getFilesResponse", initialData);
     initialData = null;
   }

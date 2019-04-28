@@ -1,16 +1,44 @@
 {
   "name": "moddoc",
-  "version": "0.0.0",
+  "description": "A new way to read Documentation of Node Modules",
+  "version": "0.0.1",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href ./",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron-tsc": "ng build --base-href ./ && electron ."
+    "electron-tsc": "ng build --base-href ./ && electron .",
+    "build:mac": "npm run build && build --linux",
+    "build:linux": "npm run build && build --linux"
   },
+  "build": {
+    "appId": "com.github.sarthak.moddoc",
+    "productName": "moddoc",
+    "files": [
+      "**/*",
+      "dist/**/*"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "dist"
+    },
+    "linux": {
+      "category": "Utility",
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  },
+  "author": "Sarthology <something@something.com>",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",
@@ -25,7 +53,6 @@
     "core-js": "^2.5.4",
     "electron-store": "^3.2.0",
     "github-markdown-css": "^3.0.1",
-    "meow": "^5.0.0",
     "ngx-electron": "^2.1.1",
     "ngx-markdown": "^7.1.4",
     "rxjs": "~6.2.0",
@@ -41,6 +68,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "~4.3.0",
     "electron": "^4.0.1",
+    "electron-builder": "^20.39.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.0.0",
