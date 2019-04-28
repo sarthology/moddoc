@@ -6,7 +6,6 @@
 
 <div align="center"><img src="https://i.imgur.com/EQYQepd.png"></div>
 
-## Features
 
 
 ## Prerequisites
