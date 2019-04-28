@@ -25,6 +25,7 @@
       "buildResources": "dist"
     },
     "linux": {
+      "category": "Utility",
       "target": [
         {
           "target": "deb",
