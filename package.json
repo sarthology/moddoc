@@ -26,6 +26,7 @@
     "electron-store": "^3.2.0",
     "github-markdown-css": "^3.0.1",
     "meow": "^5.0.0",
+    "ngx-electron": "^2.1.1",
     "ngx-markdown": "^7.1.4",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
