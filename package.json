@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --prod --base-href ./",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -35,6 +35,8 @@
       ]
     }
   },
+  "author": "Sarthology <something@something.com>",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",
