@@ -5,11 +5,35 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron-tsc": "ng build --base-href ./ && electron ."
+    "electron-tsc": "ng build --base-href ./ && electron .",
+    "build:mac": "npm run build && build --linux",
+    "build:linux": "npm run build && build --linux"
+  },
+  "build": {
+    "appId": "com.github.sarthak.moddoc",
+    "productName": "moddoc",
+    "files": [
+      "**/*",
+      "dist/**/*"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "dist"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
   },
   "private": true,
   "dependencies": {
@@ -40,6 +64,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "~4.3.0",
     "electron": "^4.0.1",
+    "electron-builder": "^20.39.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.0.0",
