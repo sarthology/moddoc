@@ -37,7 +37,7 @@
       ]
     }
   },
-  "author": "Sarthology",
+  "author": "Sarthology <something@something.com>",
   "license": "MIT",
   "private": true,
   "dependencies": {
