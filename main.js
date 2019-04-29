@@ -7,36 +7,13 @@ const {
   dialog,
   clipboard,
   Menu,
-  MenuItem,
-  ipcRenderer
+  MenuItem
 } = require('electron');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
-<<<<<<< HEAD
-const meow = require('meow');
 
-const cli = meow(
-  `
-  Usage
-    $ moddoc .
-    $ moddoc path/to/project
-  Examples
-	  $ moddoc ~/Downloads/moddoc
-`,
-  {
-    flags: {
-      help: {
-        alias: 'h'
-      },
-      version: {
-        alias: 'v'
-      }
-    }
-  }
-);
-
-const { input } = cli;
+let win, initialData;
 const menu = new Menu();
 menu.append(
   new MenuItem({
@@ -46,10 +23,6 @@ menu.append(
     }
   })
 );
-=======
->>>>>>> 6138fc1df40888402eff375812f4eb58657abf7a
-
-let win, initialData;
 
 const isPackaged = !process.defaultApp;
 
@@ -78,27 +51,17 @@ function createWindow() {
 
 app.on('ready', () => {
   createWindow();
-<<<<<<< HEAD
-  if (input[0]) {
-    let data = addProject(input[0]);
-    store.set(initialData, data);
-  }
-});
-
-ipcMain.on('getFiles', (event, arg) => {
-  if (initialData && input[0]) {
-    win.webContents.send('getFilesResponse', initialData);
-=======
   if (input) {
     initialData = addProject(input);
   }
 });
 
-ipcMain.on("getFiles", (event, arg) => {
-  if(initialData && input){
-    initialData ? initialData = { file: input, ...initialData } : initialData = null
-    win.webContents.send("getFilesResponse", initialData);
->>>>>>> 6138fc1df40888402eff375812f4eb58657abf7a
+ipcMain.on('getFiles', (event, arg) => {
+  if (initialData && input) {
+    initialData
+      ? (initialData = { file: input, ...initialData })
+      : (initialData = null);
+    win.webContents.send('getFilesResponse', initialData);
     initialData = null;
   } else {
     dialog.showOpenDialog({ properties: ['openDirectory'] }, filePaths => {
