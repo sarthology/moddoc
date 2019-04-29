@@ -5,9 +5,11 @@ const path = require('path');
 const url = require('url');
 const fs = require('fs');
 
-const input = process.argv[1];
-
 let win,initialData;
+
+const isPackaged = !process.defaultApp;
+
+const input = isPackaged ? process.argv[1] : process.argv.splice(2)[0];
 
 function createWindow() {
 	win = new BrowserWindow();
