@@ -1,27 +1,42 @@
-# Moddoc
+<div align="center"><img src="https://i.imgur.com/9HaEz3P.png"></div>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+## Moddoc
 
-## Development server
+🐶 Best way to see Documention of Node Modules in your Project.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<div align="center"><img src="https://i.imgur.com/EQYQepd.png"></div>
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Prerequisites
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Before running this locally you must have these installed
 
-## Running unit tests
++ Node
++ Electron
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installing
 
-## Running end-to-end tests
+It's built in electron so the process to start this is really easy
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+1. `npm install`
+2. `npm install electron -g`
+3. `npm run electron-tsc`
 
-## Further help
+That's it.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Contributing
+
+Feel free to contribute to this project and treat it like your own. 😊 
+
+## License
+
+MIT License
+
+## Author
+
+[Sarthak Sharma](https://twitter.com/sarthology)
+
+## Acknowledgments
+
+Icons used from [flaticon](https://flaticon.com)

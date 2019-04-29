@@ -7,6 +7,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MdViewerComponent } from './md-viewer/md-viewer.component';
 import { ProjectbarComponent } from './projectbar/projectbar.component';
 import { ModulebarComponent } from './modulebar/modulebar.component';
+import { NgxElectronModule } from 'ngx-electron';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ModulebarComponent } from './modulebar/modulebar.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    MarkdownModule.forRoot({ loader: HttpClient })
+    MarkdownModule.forRoot({ loader: HttpClient }),
+    NgxElectronModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -13,6 +13,7 @@ const {
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
+<<<<<<< HEAD
 const meow = require('meow');
 
 const cli = meow(
@@ -45,8 +46,14 @@ menu.append(
     }
   })
 );
+=======
+>>>>>>> 6138fc1df40888402eff375812f4eb58657abf7a
 
 let win, initialData;
+
+const isPackaged = !process.defaultApp;
+
+const input = isPackaged ? process.argv[1] : process.argv.splice(2)[0];
 
 function createWindow() {
   win = new BrowserWindow();
@@ -71,6 +78,7 @@ function createWindow() {
 
 app.on('ready', () => {
   createWindow();
+<<<<<<< HEAD
   if (input[0]) {
     let data = addProject(input[0]);
     store.set(initialData, data);
@@ -80,6 +88,17 @@ app.on('ready', () => {
 ipcMain.on('getFiles', (event, arg) => {
   if (initialData && input[0]) {
     win.webContents.send('getFilesResponse', initialData);
+=======
+  if (input) {
+    initialData = addProject(input);
+  }
+});
+
+ipcMain.on("getFiles", (event, arg) => {
+  if(initialData && input){
+    initialData ? initialData = { file: input, ...initialData } : initialData = null
+    win.webContents.send("getFilesResponse", initialData);
+>>>>>>> 6138fc1df40888402eff375812f4eb58657abf7a
     initialData = null;
   } else {
     dialog.showOpenDialog({ properties: ['openDirectory'] }, filePaths => {
