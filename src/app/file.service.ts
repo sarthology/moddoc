@@ -36,12 +36,16 @@ export class FileService {
     return this._electronService.ipcRenderer.send('onFileError',error)
   }
   distinct(projects:any,arg){
-    if(projects.filter(project=>project.file!==arg.file).length > 0 || projects.length === 0){
+    console.log(projects.filter(project=>project.file!==arg.file).length)
+    if(projects.filter(project=>project.file===arg.file).length === 1 ){
+      this._electronService.ipcRenderer.send('onAlreadyExist','project')
+      return false
+    }
+    else if( projects.length === 0){
       return true
     }
     else{
-      this._electronService.ipcRenderer.send('onAlreadyExist','project')
-      return false
+      return true
     }
   }
 }
