@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { Subject } from 'rxjs/internal/Subject';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,27 @@ export class FileService {
   public currentModule: string;
   public _listners = new Subject<any>();
 
-  constructor(private _electronService: ElectronService) {}
+  constructor(
+    private _electronService: ElectronService,
+    private http: HttpClient
+  ) {
+    this._electronService.ipcRenderer.on('addAnalytics', (event, data) => {
+      this.http
+        .post(environment.API + '/addUser', {
+          macAddress: data.macAddress,
+          platform: data.os,
+          version: data.version
+        })
+        .subscribe(
+          res => {
+            // Success
+          },
+          err => {
+            // Show error dialog
+          }
+        );
+    });
+  }
 
   async getFiles() {
     return new Promise<string[]>((resolve, reject) => {
@@ -36,8 +58,8 @@ export class FileService {
   noFileError(error) {
     return this._electronService.ipcRenderer.send('onFileError', error);
   }
+
   distinct(projects: any, arg) {
-    console.log(projects.filter(project => project.file !== arg.file).length);
     if (projects.filter(project => project.file === arg.file).length === 1) {
       this._electronService.ipcRenderer.send('onAlreadyExist', 'project');
       return false;

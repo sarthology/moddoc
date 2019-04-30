@@ -12,6 +12,9 @@ const {
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
+const os = require('os');
+const macAddress = require('macaddress');
+const pJSON = require('./package.json');
 
 let win, initialData;
 const menu = new Menu();
@@ -46,6 +49,16 @@ function createWindow() {
 
   win.on('closed', () => {
     win = null;
+  });
+}
+
+function addAnalytics() {
+  macAddress.one(function(err, mac) {
+    BrowserWindow.getFocusedWindow().webContents.send('addAnalytics', {
+      macAddress: mac,
+      os: os.platform(),
+      version: pJSON.version
+    });
   });
 }
 
@@ -110,6 +123,7 @@ app.on('activate', () => {
 let addProject = filePath => {
   if (fs.existsSync(filePath + '/package.json')) {
     data = fs.readFileSync(filePath + '/package.json', 'utf8');
+    addAnalytics();
     return JSON.parse(data);
   } else {
     dialog.showMessageBox({
@@ -120,5 +134,3 @@ let addProject = filePath => {
     return null;
   }
 };
-
-let removeProject = filePath => {};
