@@ -37,6 +37,7 @@ export class ProjectbarComponent implements OnInit {
     this.clicked = event;
     this.currentProject.emit(project);
   }
+
   highlightProject() {
     if (document.querySelector('.active-project')) {
       document
