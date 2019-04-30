@@ -28,9 +28,13 @@ That's it.
 ## Features
 
 ***1. Open multiple projects at a time***
+
 ***2. Shows both dependencies and dev dependencies***
+
 ***3. Quick copy widget***
+
 ***4. In-app browser for external links***
+
 ***5. Offline access to Documentation***
 
 ## Contributing
