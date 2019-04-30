@@ -6,7 +6,7 @@
     </div>
     <div id="project-names">
       <div class="project" *ngFor="let project of projects;  let last = last"
-        (click)="setCurrentProject(project,$event)" (contextmenu)="onRightClick(project)">
+        (click)="setCurrentProject(project,$event)">
         <p id="{{project.name}}">{{project.name}}</p>
         <span *ngIf="last || clicked === null">{{highlightProject()}}</span>
       </div>

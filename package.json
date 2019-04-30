@@ -12,7 +12,8 @@
     "e2e": "ng e2e",
     "electron-tsc": "ng build --base-href ./ && electron .",
     "build:mac": "npm run build && build --linux",
-    "build:linux": "npm run build && build --linux"
+    "build:linux": "npm run build && build --linux",
+    "ship": "build --mac -p always"
   },
   "build": {
     "appId": "com.github.sarthak.moddoc",
@@ -52,7 +53,9 @@
     "@angular/router": "^6.1.0",
     "core-js": "^2.5.4",
     "electron-store": "^3.2.0",
+    "electron-updater": "^4.0.6",
     "github-markdown-css": "^3.0.1",
+    "macaddress": "^0.2.9",
     "ngx-electron": "^2.1.1",
     "ngx-markdown": "^7.1.4",
     "rxjs": "~6.2.0",
@@ -65,7 +68,7 @@
     "@angular/language-service": "^6.1.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.4",
+    "@types/node": "^8.9.5",
     "codelyzer": "~4.3.0",
     "electron": "^4.0.1",
     "electron-builder": "^20.39.0",
