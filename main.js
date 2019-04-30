@@ -13,6 +13,7 @@ const path = require('path');
 const url = require('url');
 const fs = require('fs');
 const os = require('os');
+const { autoUpdater } = require('electron-updater');
 const macAddress = require('macaddress');
 const pJSON = require('./package.json');
 
@@ -64,6 +65,7 @@ function addAnalytics() {
 
 app.on('ready', () => {
   createWindow();
+  autoUpdater.checkForUpdates();
   if (input) {
     initialData = addProject(input);
   }
@@ -134,3 +136,37 @@ let addProject = filePath => {
     return null;
   }
 };
+
+autoUpdater.on('update-available', () => {
+  dialog.showMessageBox(
+    {
+      type: 'info',
+      title: 'Found Updates',
+      message: 'Found updates, do you want update now?',
+      buttons: ['Sure', 'No']
+    },
+    buttonIndex => {
+      if (buttonIndex === 0) {
+        autoUpdater.downloadUpdate();
+
+        dialog.showMessageBox({
+          type: 'info',
+          title: 'Downloading',
+          message: 'Updates are downloading, will notify once done.'
+        });
+      }
+    }
+  );
+});
+
+autoUpdater.on('update-downloaded', () => {
+  dialog.showMessageBox(
+    {
+      title: 'Install Updates',
+      message: 'Updates downloaded, application will be quit for update...'
+    },
+    () => {
+      setImmediate(() => autoUpdater.quitAndInstall());
+    }
+  );
+});
